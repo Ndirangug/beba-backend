@@ -44,6 +44,7 @@ generate:
 
 # test:
 #     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
+# grpcurl --plaintext -d '{"tripId": 4}'  localhost:50051 beba_backend.BebaBackend.NewTrip
 #     
 #	grpcurl  vet-backend-fybfguvuua-uc.a.run.app:50051 list
 #	grpcui  vet-backend-fybfguvuua-uc.a.run.app:50051

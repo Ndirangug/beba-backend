@@ -29,7 +29,7 @@ type Vehicle struct {
 
 func (v *Vehicle) ToProtos() *protos.Vehicle {
 	randomLocation := protos.Location{Lat: faker.Latitude(), Long: faker.Longitude()}
-	return &protos.Vehicle{VehicleId: uint32(v.ID), Brand: v.Brand, Model: v.ModelName, ModelYear: v.ModelYear, RegistrationNumber: v.RegistrationNumber, FuelConsumption: v.FuelConsumption, Color: v.Color, DatePurchased: timestamppb.New(v.DatePurchased), Type: v.Type, Condition: v.Condition, MaxWeight: v.MaxWeight, CurrentLocation: &randomLocation, Photo: v.Photo}
+	return &protos.Vehicle{VehicleId: uint32(v.ID), Brand: v.Brand, Model: v.ModelName, ModelYear: v.ModelYear, RegistrationNumber: v.RegistrationNumber, FuelConsumption: v.FuelConsumption, Color: v.Color, DatePurchased: timestamppb.New(v.DatePurchased), ExpectedEndService: timestamppb.New(v.ExpectedEndService), Type: v.Type, Condition: v.Condition, MaxWeight: v.MaxWeight, CurrentLocation: &randomLocation, Photo: v.Photo}
 }
 func (v *Vehicle) FromProtos(vp *protos.Vehicle) *Vehicle {
 
