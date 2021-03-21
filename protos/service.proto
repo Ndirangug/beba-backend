@@ -1,0 +1,18 @@
+syntax = "proto3";
+package tiny_erp;
+
+option go_package = "github.com/ndirangug/tiny-erp-grpc/protos";
+
+service TinyErpGrpc {
+    rpc TestHello (TestHelloRequest) returns (TestHelloResponse);
+}
+
+message TestHelloRequest {
+    string name = 1;
+}
+
+message TestHelloResponse{
+    string response = 1;
+}
+
+message EmptyMessage{}
