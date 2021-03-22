@@ -1,11 +1,24 @@
 syntax = "proto3";
-package tiny_erp;
+package beba_backend;
 
-option go_package = "github.com/ndirangug/tiny-erp-grpc/protos";
+option go_package = "github.com/ndirangug/beba-backend/protos";
 
-service TinyErpGrpc {
+service BebaBackend {
     rpc TestHello (TestHelloRequest) returns (TestHelloResponse);
+    rpc GetDrivers (DriverRequest) returns (stream Driver);
+    rpc GetVehicles (VehicleRequest) returns (stream Vehicle);
+    rpc GetTrips (TripsRequest) returns (stream Trip);
+    rpc NewDriver (Driver) returns (WriteRecordResponse);
+    rpc NewVehicle (Vehicle) returns (WriteRecordResponse);
+    rpc NewTrip (Trip) returns (WriteRecordResponse);
+    rpc CancelTrip(RecordId) returns (WriteRecordResponse);
+    rpc RemoveDriver(RecordId) returns (WriteRecordResponse);
+    rpc RemoveVehicle(RecordId) returns (WriteRecordResponse);
+    rpc VehicleKilometresTravelled (VehicleRequest) returns (stream VehicleKilometresTravelledResponse);
+    rpc SendMessage (TextMessage) returns (SendMessageResponse);
+    rpc DisburseFunds (DisburseFundsRequest) returns (DisburseFundsResponse);
 }
+
 
 message TestHelloRequest {
     string name = 1;
@@ -16,3 +29,91 @@ message TestHelloResponse{
 }
 
 message EmptyMessage{}
+
+message Driver{
+    string idNumber = 5;
+    string firstName = 6;
+    string lastName = 7;
+
+}
+
+message DriverRequest{
+    string idNumber= 10;
+}
+
+message Vehicle{
+    string vehicleId = 10;
+    string brand = 11;
+    string model = 12;
+    string modelYear = 13;
+    string registrationNumber = 14;
+    float fuelConsumption= 15;
+    string color = 16;
+    string datePurchased = 17;
+    string type = 18; //pickup small truck largetruck van tuktuk
+    string condition = 19;
+    float maxWeight = 20;
+}
+
+message VehicleRequest{
+    string vehicleID = 10;
+}
+
+message VehicleKilometresTravelledResponse{
+    string date = 10;
+    double kilometres= 11;
+}
+
+message Trip{
+    string tripId = 10;
+    Driver driver = 11;
+    Vehicle vehicle = 12;
+    string scheduledDepartureTime = 13;
+    string actualDepartureTime = 14;
+    string scheduledArrivalTime = 15;
+    string actualArrivalTime = 16;
+    double origin = 17;
+    double destination = 18; 
+    string status = 19; // sheduled, ongoing, cancelled
+}
+
+message TripsRequest{
+    string vehicleID = 10;
+    string driverID = 11;
+    string startDate = 12;
+    string endDate = 13;
+    string status = 14;
+}
+
+message RecordId{
+    string id = 10;
+}
+
+message WriteRecordResponse{
+    bool status = 10;
+    string message = 11;
+    string recordId = 12;
+}
+
+message TextMessage{
+    string messageId = 10;
+    Driver recepient = 11;
+    string text = 12;
+    string timeSent = 13;
+}
+
+message SendMessageResponse{
+    string messageId = 10;
+    bool status = 11;
+    string message = 12;
+}
+
+message DisburseFundsRequest{
+    Driver driver = 10;
+    double amount = 11;
+}
+
+message DisburseFundsResponse{
+    bool status = 10;
+    string message = 11;
+}

@@ -1,13 +1,13 @@
-wpackage main
+package main
 
 import (
 	"net"
 	"os"
 	"os/signal"
 
-	"github.com/ndirangug/tiny-erp-grpc/logger"
-	"github.com/ndirangug/tiny-erp-grpc/protos"
-	"github.com/ndirangug/tiny-erp-grpc/service"
+	"github.com/ndirangug/beba-backend/logger"
+	"github.com/ndirangug/beba-backend/protos"
+	"github.com/ndirangug/beba-backend/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -17,16 +17,16 @@ const (
 )
 
 func main() {
-	logger := logger.NewErpLogger()
+	logger := logger.NewTinyLogger()
 
 	listener, err := net.Listen("tcp", port)
 	if err != nil {
 		logger.Panic("Failed to listen: %v", err)
 	}
 
-	testService := service.TinyErpGrpc(logger)
+	testService := service.NewBackendService(logger)
 	grpcServer := grpc.NewServer()
-	protos.RegisterTinyErpGrpcServer(grpcServer, testService)
+	protos.RegisterBebaBackendServer(grpcServer, testService)
 	reflection.Register(grpcServer)
 
 	go func() {
@@ -41,6 +41,7 @@ func main() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	signal.Notify(c, os.Kill)
+
 
 	// Block until a signal is received.
 	sig := <-c
