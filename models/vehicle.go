@@ -10,7 +10,7 @@ import (
 
 type Vehicle struct {
 	gorm.Model
-	RegistrationNumber string
+	RegistrationNumber string `gorm:"unique"`
 	Type               string
 	Brand              string
 	ModelName          string
