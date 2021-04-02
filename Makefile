@@ -10,6 +10,6 @@ reflect:
 
 
 # test:
-#     grpcurl --plaintext -d '{"name": "George"}'  localhost:50051 tiny_erp.TinyErpGrpc/TestHello
+#     grpcurl --plaintext -d '{"idNumber": 1}'  localhost:50051 beba_backend.BebaBackend/GetDriver
 
 

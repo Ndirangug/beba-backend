@@ -21,6 +21,8 @@ type BebaBackendClient interface {
 	TestHello(ctx context.Context, in *TestHelloRequest, opts ...grpc.CallOption) (*TestHelloResponse, error)
 	GetDrivers(ctx context.Context, in *DriverRequest, opts ...grpc.CallOption) (BebaBackend_GetDriversClient, error)
 	GetVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (BebaBackend_GetVehiclesClient, error)
+	GetDriver(ctx context.Context, in *DriverRequest, opts ...grpc.CallOption) (*Driver, error)
+	GetVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*Vehicle, error)
 	GetTrips(ctx context.Context, in *TripsRequest, opts ...grpc.CallOption) (BebaBackend_GetTripsClient, error)
 	NewDriver(ctx context.Context, in *Driver, opts ...grpc.CallOption) (*WriteRecordResponse, error)
 	NewVehicle(ctx context.Context, in *Vehicle, opts ...grpc.CallOption) (*WriteRecordResponse, error)
@@ -112,6 +114,24 @@ func (x *bebaBackendGetVehiclesClient) Recv() (*Vehicle, error) {
 		return nil, err
 	}
 	return m, nil
+}
+
+func (c *bebaBackendClient) GetDriver(ctx context.Context, in *DriverRequest, opts ...grpc.CallOption) (*Driver, error) {
+	out := new(Driver)
+	err := c.cc.Invoke(ctx, "/beba_backend.BebaBackend/GetDriver", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bebaBackendClient) GetVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*Vehicle, error) {
+	out := new(Vehicle)
+	err := c.cc.Invoke(ctx, "/beba_backend.BebaBackend/GetVehicle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *bebaBackendClient) GetTrips(ctx context.Context, in *TripsRequest, opts ...grpc.CallOption) (BebaBackend_GetTripsClient, error) {
@@ -257,6 +277,8 @@ type BebaBackendServer interface {
 	TestHello(context.Context, *TestHelloRequest) (*TestHelloResponse, error)
 	GetDrivers(*DriverRequest, BebaBackend_GetDriversServer) error
 	GetVehicles(*VehicleRequest, BebaBackend_GetVehiclesServer) error
+	GetDriver(context.Context, *DriverRequest) (*Driver, error)
+	GetVehicle(context.Context, *VehicleRequest) (*Vehicle, error)
 	GetTrips(*TripsRequest, BebaBackend_GetTripsServer) error
 	NewDriver(context.Context, *Driver) (*WriteRecordResponse, error)
 	NewVehicle(context.Context, *Vehicle) (*WriteRecordResponse, error)
@@ -282,6 +304,12 @@ func (UnimplementedBebaBackendServer) GetDrivers(*DriverRequest, BebaBackend_Get
 }
 func (UnimplementedBebaBackendServer) GetVehicles(*VehicleRequest, BebaBackend_GetVehiclesServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetVehicles not implemented")
+}
+func (UnimplementedBebaBackendServer) GetDriver(context.Context, *DriverRequest) (*Driver, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDriver not implemented")
+}
+func (UnimplementedBebaBackendServer) GetVehicle(context.Context, *VehicleRequest) (*Vehicle, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVehicle not implemented")
 }
 func (UnimplementedBebaBackendServer) GetTrips(*TripsRequest, BebaBackend_GetTripsServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetTrips not implemented")
@@ -384,6 +412,42 @@ type bebaBackendGetVehiclesServer struct {
 
 func (x *bebaBackendGetVehiclesServer) Send(m *Vehicle) error {
 	return x.ServerStream.SendMsg(m)
+}
+
+func _BebaBackend_GetDriver_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DriverRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BebaBackendServer).GetDriver(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/beba_backend.BebaBackend/GetDriver",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BebaBackendServer).GetDriver(ctx, req.(*DriverRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BebaBackend_GetVehicle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VehicleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BebaBackendServer).GetVehicle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/beba_backend.BebaBackend/GetVehicle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BebaBackendServer).GetVehicle(ctx, req.(*VehicleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _BebaBackend_GetTrips_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -582,6 +646,14 @@ var BebaBackend_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TestHello",
 			Handler:    _BebaBackend_TestHello_Handler,
+		},
+		{
+			MethodName: "GetDriver",
+			Handler:    _BebaBackend_GetDriver_Handler,
+		},
+		{
+			MethodName: "GetVehicle",
+			Handler:    _BebaBackend_GetVehicle_Handler,
 		},
 		{
 			MethodName: "NewDriver",

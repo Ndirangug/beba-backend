@@ -15,6 +15,6 @@ require (
 	google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb // indirect
 	google.golang.org/grpc v1.36.0
 	google.golang.org/protobuf v1.25.0
-	gorm.io/driver/postgres v1.0.8 // indirect
-	gorm.io/gorm v1.21.4 // indirect
+	gorm.io/driver/postgres v1.0.8
+	gorm.io/gorm v1.21.4
 )

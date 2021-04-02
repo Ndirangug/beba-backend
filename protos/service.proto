@@ -1,12 +1,16 @@
 syntax = "proto3";
 package beba_backend;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/ndirangug/beba-backend/protos";
 
 service BebaBackend {
     rpc TestHello (TestHelloRequest) returns (TestHelloResponse);
     rpc GetDrivers (DriverRequest) returns (stream Driver);
     rpc GetVehicles (VehicleRequest) returns (stream Vehicle);
+    rpc GetDriver (DriverRequest) returns (Driver);
+    rpc GetVehicle (VehicleRequest) returns (Vehicle);
     rpc GetTrips (TripsRequest) returns (stream Trip);
     rpc NewDriver (Driver) returns (WriteRecordResponse);
     rpc NewVehicle (Vehicle) returns (WriteRecordResponse);
@@ -31,32 +35,42 @@ message TestHelloResponse{
 message EmptyMessage{}
 
 message Driver{
-    string idNumber = 5;
+    uint32 idNumber = 5;
     string firstName = 6;
     string lastName = 7;
+    string email = 8;
+    string phone = 9;
+    string sex = 10;
+    google.protobuf.Timestamp dateOfBirth = 11;
+    google.protobuf.Timestamp dateEmployed = 12;
+    string comment = 13;
+    string evaluationReport = 14;
+    string driversLicence = 15;
 
 }
 
 message DriverRequest{
-    string idNumber= 10;
+    uint32 idNumber= 10;
+    string searchQuery = 11;
 }
 
 message Vehicle{
-    string vehicleId = 10;
+    uint32 vehicleId = 10;
     string brand = 11;
     string model = 12;
     string modelYear = 13;
     string registrationNumber = 14;
     float fuelConsumption= 15;
     string color = 16;
-    string datePurchased = 17;
+    google.protobuf.Timestamp datePurchased = 17;
     string type = 18; //pickup small truck largetruck van tuktuk
     string condition = 19;
     float maxWeight = 20;
 }
 
 message VehicleRequest{
-    string vehicleID = 10;
+    uint32 vehicleID = 10;
+    string searchQuery = 11;
 }
 
 message VehicleKilometresTravelledResponse{
@@ -65,13 +79,13 @@ message VehicleKilometresTravelledResponse{
 }
 
 message Trip{
-    string tripId = 10;
+    uint32 tripId = 10;
     Driver driver = 11;
     Vehicle vehicle = 12;
-    string scheduledDepartureTime = 13;
-    string actualDepartureTime = 14;
-    string scheduledArrivalTime = 15;
-    string actualArrivalTime = 16;
+    google.protobuf.Timestamp scheduledDepartureTime = 13;
+    google.protobuf.Timestamp actualDepartureTime = 14;
+    google.protobuf.Timestamp scheduledArrivalTime = 15;
+    google.protobuf.Timestamp actualArrivalTime = 16;
     double origin = 17;
     double destination = 18; 
     string status = 19; // sheduled, ongoing, cancelled
@@ -80,8 +94,8 @@ message Trip{
 message TripsRequest{
     string vehicleID = 10;
     string driverID = 11;
-    string startDate = 12;
-    string endDate = 13;
+    google.protobuf.Timestamp startDate = 12;
+    google.protobuf.Timestamp endDate = 13;
     string status = 14;
 }
 
