@@ -8,7 +8,6 @@ import (
 	"github.com/ndirangug/beba-backend/logger"
 	"github.com/ndirangug/beba-backend/models"
 	"github.com/ndirangug/beba-backend/protos"
-	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Backend implements  grpc methods auto-generated from .proto file
@@ -37,25 +36,21 @@ func (s *BackendService) GetDriver(ctx context.Context, in *protos.DriverRequest
 	dbDriver := &models.Driver{}
 	result := s.db.Conn.First(dbDriver, in.IdNumber)
 
-	driver := &protos.Driver{IdNumber: uint32(dbDriver.ID), FirstName: dbDriver.FirstName, LastName: dbDriver.LastName, Email: dbDriver.Email, Phone: dbDriver.Phone, Sex: dbDriver.Sex, DateOfBirth: timestamppb.New(dbDriver.DateOfBirth), DateEmployed: timestamppb.New(dbDriver.DateEmployed), Comment: dbDriver.Comment, EvaluationReport: dbDriver.EvaluationReport, DriversLicence: dbDriver.DriversLicence}
-
-	return driver, result.Error
+	return dbDriver.ToProtos(), result.Error
 }
 
 func (s *BackendService) GetDrivers(payload *protos.DriverRequest, stream protos.BebaBackend_GetDriversServer) error {
-	drivers := []*protos.Driver{
-		{IdNumber: 6, FirstName: "George", LastName: "Ndirangu"},
-		{IdNumber: 7, FirstName: "Ndisho", LastName: "Heyy"},
-	}
+	dbDrivers := []*models.Driver{}
 
-	for _, driver := range drivers {
+	result := s.db.Conn.Find(&dbDrivers)
 
-		if err := stream.Send(driver); err != nil {
+	for _, dbDriver := range dbDrivers {
+		if err := stream.Send(dbDriver.ToProtos()); err != nil {
 			return err
 		}
 	}
 
-	return nil
+	return result.Error
 
 }
 

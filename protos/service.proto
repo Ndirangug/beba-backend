@@ -63,9 +63,10 @@ message Vehicle{
     float fuelConsumption= 15;
     string color = 16;
     google.protobuf.Timestamp datePurchased = 17;
-    string type = 18; //pickup small truck largetruck van tuktuk
-    string condition = 19;
-    float maxWeight = 20;
+    google.protobuf.Timestamp expectedEndService = 18;
+    string type = 19; //pickup small truck largetruck van tuktuk
+    string condition = 20;
+    float maxWeight = 21;
 }
 
 message VehicleRequest{
@@ -86,8 +87,8 @@ message Trip{
     google.protobuf.Timestamp actualDepartureTime = 14;
     google.protobuf.Timestamp scheduledArrivalTime = 15;
     google.protobuf.Timestamp actualArrivalTime = 16;
-    double origin = 17;
-    double destination = 18; 
+    Location origin = 17;
+    Location destination = 18; 
     string status = 19; // sheduled, ongoing, cancelled
 }
 
@@ -130,4 +131,9 @@ message DisburseFundsRequest{
 message DisburseFundsResponse{
     bool status = 10;
     string message = 11;
+}
+
+message Location{
+    double lat = 1;
+    double long = 2;
 }
