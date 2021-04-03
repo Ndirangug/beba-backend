@@ -13,6 +13,7 @@ reflect:
 #     grpcurl --plaintext -d '{"idNumber": 1}'  localhost:50051 beba_backend.BebaBackend/GetDriver
 #     grpcurl --plaintext -d '{"searchQuery": "KAG"}'  localhost:50051 beba_backend.BebaBackend/GetVehicles
 #     grpcurl --plaintext -d '{"idNumber":2, "searchQuery": "geo"}'  localhost:50051 beba_backend.BebaBackend/GetDrivers
-#   grpcurl --plaintext -d '{"searchQuery": "KAG 103Z"}'  localhost:50051 beba_backend.BebaBackend/GetVehicles
-# grpcurl --plaintext -d '{"vehicleId":0, "driverId":null,"status": "scheduled"}'  localhost:50051 beba_backend.BebaBackend/GetTrips
+#     grpcurl --plaintext -d '{"searchQuery": "KAG 103Z"}'  localhost:50051 beba_backend.BebaBackend/GetVehicles
+#     grpcurl --plaintext -d '{"vehicleId":0, "driverId":null,"status": "scheduled"}'  localhost:50051 beba_backend.BebaBackend/GetTrips
+#     grpcurl --plaintext -d '{ "brand":"Toyota","model":"Hilux Double Cab 4x4", "registrationNumber" "KAX 321D"}'  localhost:50051 beba_backend.BebaBackend/NewVehicle
 

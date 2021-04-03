@@ -136,22 +136,22 @@ func (s *BackendService) NewTrip(ctx context.Context, payload *protos.Trip) (*pr
 }
 
 func (s *BackendService) CancelTrip(ctx context.Context, tripId *protos.RecordId) (*protos.WriteRecordResponse, error) {
-	dbTrip := &models.Trip{Model: gorm.Model{ID: uint(tripId.Id)}}
+	dbTrip := &models.Trip{Model: gorm.Model{ID: uint(tripId.Id)}, Status: "cancelled"}
 	result := s.db.Conn.UpdateColumns(&dbTrip)
 
 	response := &protos.WriteRecordResponse{}
 	if result.Error != nil {
-		response = &protos.WriteRecordResponse{Message: "Updated trip failed", Status: false, RecordId: uint32(dbTrip.ID)}
+		response = &protos.WriteRecordResponse{Message: "Cancel trip failed", Status: false, RecordId: uint32(dbTrip.ID)}
 		return nil, result.Error
 	}
-	response = &protos.WriteRecordResponse{Message: "Successfully updated driver", Status: true, RecordId: uint32(dbTrip.ID)}
+	response = &protos.WriteRecordResponse{Message: "Successfully cancelled trip", Status: true, RecordId: uint32(dbTrip.ID)}
 
 	return response, result.Error
 }
 
 func (s *BackendService) RemoveDriver(ctx context.Context, driverId *protos.RecordId) (*protos.WriteRecordResponse, error) {
 	dbDriver := &models.Driver{Model: gorm.Model{ID: uint(driverId.Id)}}
-	result := s.db.Conn.Delete(&dbDriver)
+	result := s.db.Conn.Delete(&dbDriver, dbDriver.ID)
 
 	response := &protos.WriteRecordResponse{}
 	if result.Error != nil {
@@ -165,7 +165,7 @@ func (s *BackendService) RemoveDriver(ctx context.Context, driverId *protos.Reco
 
 func (s *BackendService) RemoveVehicle(ctx context.Context, vehicleId *protos.RecordId) (*protos.WriteRecordResponse, error) {
 	dbVehicle := &models.Vehicle{Model: gorm.Model{ID: uint(vehicleId.Id)}}
-	result := s.db.Conn.Delete(&dbVehicle)
+	result := s.db.Conn.Delete(&dbVehicle, dbVehicle.ID)
 
 	response := &protos.WriteRecordResponse{}
 	if result.Error != nil {
