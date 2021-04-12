@@ -1,11 +1,12 @@
+envoy:
+	envoy -c envoy.yaml
+
 serve:
+	gnome-terminal -e make envoy
 	sudo service postgresql start && \
 	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
 	export PORT=:50051 && \
 	go run main.go serve
-
-envoy:
-	envoy -c envoy.yaml
 # generate:
 # 	protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative protos/service.proto
 
