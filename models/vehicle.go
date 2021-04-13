@@ -21,6 +21,7 @@ type Vehicle struct {
 	Condition          string    `faker:"word"`
 	MaxWeight          float32   `faker:"oneof: 4.95, 9.99, 31.97"`
 	FuelConsumption    float32   `faker:"oneof: 4.5, 7.2, 15.6,31.97"`
+	Photo              string    `faker:"vehicle_image"`
 	Trips              []Trip    `faker:"-"`
 }
 

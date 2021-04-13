@@ -67,4 +67,17 @@ func registerCustomGenerators() {
 		return time.Unix(sec, 0), nil
 	})
 
+	_ = faker.AddProvider("avatar", func(v reflect.Value) (interface{}, error) {
+		return fmt.Sprintf("https://i.pravatar.cc/150?img=%d", rand.Intn(70)), nil
+	})
+
+	_ = faker.AddProvider("vehicle_image", func(v reflect.Value) (interface{}, error) {
+		return fmt.Sprintf("https://firebasestorage.googleapis.com/v0/b/fleet-management-sys.appspot.com/o/3-vw-amarok-removebg-preview.png?alt=media&token=f692ecb3-3954-414f-bc7b-40ec85118a42"), nil
+	})
+
+	_ = faker.AddProvider("driver_phone", func(v reflect.Value) (interface{}, error) {
+
+		return fmt.Sprintf("07%d", rand.Intn(99999999-10000000)+10000000), nil
+	})
+
 }

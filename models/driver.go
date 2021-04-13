@@ -20,6 +20,7 @@ type Driver struct {
 	Comment          string    `faker:"sentence"`
 	EvaluationReport string    `faker:"url"`
 	DriversLicence   string    `faker:"url"`
+	Avatar           string    `faker:"avatar"`
 	Trips            []Trip    `faker:"-"`
 }
 
