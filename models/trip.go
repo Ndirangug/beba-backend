@@ -9,18 +9,18 @@ import (
 )
 
 type Trip struct {
-	gorm.Model
-	DriverID          uint
-	VehicleID         uint
-	TimeStart         time.Time
-	TimeEnd           time.Time
-	TimeExpectedStart time.Time
-	TimeExpectedEnd   time.Time
-	LatitudeBegin     float64
-	LongitudeBegin    float64
-	LatitudeEnd       float64
-	LongitudeEnd      float64
-	Status            string
+	gorm.Model        `faker:"-"`
+	DriverID          uint      `faker:"boundary_start=2, boundary_end=10"`
+	VehicleID         uint      `faker:"boundary_start=2, boundary_end=10"`
+	TimeStart         time.Time `faker:"timet"`
+	TimeEnd           time.Time `faker:"timet"`
+	TimeExpectedStart time.Time `faker:"timet"`
+	TimeExpectedEnd   time.Time `faker:"timet"`
+	LatitudeBegin     float64   `faker:"lat"`
+	LongitudeBegin    float64   `faker:"long"`
+	LatitudeEnd       float64   `faker:"lat"`
+	LongitudeEnd      float64   `faker:"long"`
+	Status            string    `faker:"oneof: scheduled, cancelled, ongoing"`
 }
 
 func (t *Trip) ToProtos() *protos.Trip {

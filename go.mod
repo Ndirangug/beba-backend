@@ -3,6 +3,7 @@ module github.com/ndirangug/beba-backend
 go 1.15
 
 require (
+	github.com/bxcodec/faker/v3 v3.6.0
 	github.com/golang/protobuf v1.4.3
 	github.com/jackc/pgproto3/v2 v2.0.7 // indirect
 	github.com/jinzhu/now v1.1.2 // indirect

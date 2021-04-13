@@ -9,18 +9,18 @@ import (
 )
 
 type Driver struct {
-	gorm.Model
-	FirstName        string
-	LastName         string
-	Email            string `gorm:"unique"`
-	Phone            string `gorm:"unique"`
-	Sex              string
-	DateOfBirth      time.Time
-	DateEmployed     time.Time
-	Comment          string
-	EvaluationReport string
-	DriversLicence   string
-	Trips            []Trip
+	gorm.Model       `faker:"-"`
+	FirstName        string    `faker:"first_name"`
+	LastName         string    `faker:"last_name"`
+	Email            string    `gorm:"unique" faker:"email"`
+	Phone            string    `gorm:"unique" faker:"phone_number"`
+	Sex              string    `faker:"oneof: male,female"`
+	DateOfBirth      time.Time `faker:"timet"`
+	DateEmployed     time.Time `faker:"timet"`
+	Comment          string    `faker:"sentence"`
+	EvaluationReport string    `faker:"url"`
+	DriversLicence   string    `faker:"url"`
+	Trips            []Trip    `faker:"-"`
 }
 
 func (d *Driver) ToProtos() *protos.Driver {

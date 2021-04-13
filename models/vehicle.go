@@ -9,19 +9,19 @@ import (
 )
 
 type Vehicle struct {
-	gorm.Model
-	RegistrationNumber string `gorm:"unique"`
-	Type               string
-	Brand              string
-	ModelName          string
-	ModelYear          string
-	Color              string
-	DatePurchased      time.Time
-	ExpectedEndService time.Time
-	Condition          string
-	MaxWeight          float32
-	FuelConsumption    float32
-	Trips              []Trip
+	gorm.Model         `faker:"-"`
+	RegistrationNumber string    `gorm:"unique" faker:"vehicle_reg_number"`
+	Type               string    `faker:"oneof: lorry,pickup,van"`
+	Brand              string    `faker:"oneof: nissan,toyota, volkswagen, mitsubishi"`
+	ModelName          string    `faker:"sentence len=4"`
+	ModelYear          string    `faker:"year"`
+	Color              string    `faker:"oneof: red,white, gray, blue"`
+	DatePurchased      time.Time `faker:"timet"`
+	ExpectedEndService time.Time `faker:"timet"`
+	Condition          string    `faker:"word"`
+	MaxWeight          float32   `faker:"oneof: 4.95, 9.99, 31.97"`
+	FuelConsumption    float32   `faker:"oneof: 4.5, 7.2, 15.6,31.97"`
+	Trips              []Trip    `faker:"-"`
 }
 
 func (v *Vehicle) ToProtos() *protos.Vehicle {

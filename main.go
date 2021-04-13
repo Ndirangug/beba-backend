@@ -14,6 +14,8 @@ func main() {
 		cmd.Serve()
 	case "migrate":
 		cmd.Migrate()
+	case "seed":
+		cmd.Seed()
 	default:
 		println("argument 'serve' or 'migrate' expected")
 
