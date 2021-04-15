@@ -67,6 +67,7 @@ message Vehicle{
     string type = 19; //pickup small truck largetruck van tuktuk
     string condition = 20;
     float maxWeight = 21;
+    Location currentLocation = 22;
 }
 
 message VehicleRequest{
