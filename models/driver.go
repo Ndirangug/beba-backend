@@ -25,7 +25,7 @@ type Driver struct {
 }
 
 func (d *Driver) ToProtos() *protos.Driver {
-	return &protos.Driver{FirstName: d.FirstName, LastName: d.LastName, Email: d.Email, Phone: d.Phone, Sex: d.Sex, DateOfBirth: timestamppb.New(d.DateOfBirth), DateEmployed: timestamppb.New(d.DateEmployed), Comment: d.Comment, EvaluationReport: d.EvaluationReport, DriversLicence: d.DriversLicence}
+	return &protos.Driver{FirstName: d.FirstName, LastName: d.LastName, Email: d.Email, Phone: d.Phone, Sex: d.Sex, DateOfBirth: timestamppb.New(d.DateOfBirth), DateEmployed: timestamppb.New(d.DateEmployed), Comment: d.Comment, EvaluationReport: d.EvaluationReport, DriversLicence: d.DriversLicence, Photo: d.Avatar}
 }
 
 func (d *Driver) FromProtos(dp *protos.Driver) *Driver {
@@ -39,6 +39,7 @@ func (d *Driver) FromProtos(dp *protos.Driver) *Driver {
 	d.Comment = dp.Comment
 	d.EvaluationReport = dp.EvaluationReport
 	d.DriversLicence = dp.DriversLicence
-
+	d.Avatar = dp.Photo
+	
 	return d
 }

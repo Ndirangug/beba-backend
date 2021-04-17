@@ -46,6 +46,7 @@ message Driver{
     string comment = 13;
     string evaluationReport = 14;
     string driversLicence = 15;
+    string photo = 16;
 
 }
 
@@ -68,6 +69,7 @@ message Vehicle{
     string condition = 20;
     float maxWeight = 21;
     Location currentLocation = 22;
+    string photo = 23;
 }
 
 message VehicleRequest{
