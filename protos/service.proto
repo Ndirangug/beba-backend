@@ -47,6 +47,7 @@ message Driver{
     string evaluationReport = 14;
     string driversLicence = 15;
     string photo = 16;
+    bool onTrip = 17;
 
 }
 

@@ -29,6 +29,10 @@ func Seed() {
 	vehicles := []*models.Vehicle{}
 	trips := []*models.Trip{}
 
+	// db.Conn.Delete(drivers)
+	// db.Conn.Delete(vehicles)
+	// db.Conn.Delete(trips)
+
 	faker.SetRandomMapAndSliceSize(30)
 	err = faker.FakeData(&drivers)
 	if err != nil {

@@ -21,11 +21,12 @@ type Driver struct {
 	EvaluationReport string    `faker:"url"`
 	DriversLicence   string    `faker:"url"`
 	Avatar           string    `faker:"avatar"`
-	Trips            []Trip    `faker:"-"`
+	OnTrip           bool
+	Trips            []Trip `faker:"-"`
 }
 
 func (d *Driver) ToProtos() *protos.Driver {
-	return &protos.Driver{FirstName: d.FirstName, LastName: d.LastName, Email: d.Email, Phone: d.Phone, Sex: d.Sex, DateOfBirth: timestamppb.New(d.DateOfBirth), DateEmployed: timestamppb.New(d.DateEmployed), Comment: d.Comment, EvaluationReport: d.EvaluationReport, DriversLicence: d.DriversLicence, Photo: d.Avatar}
+	return &protos.Driver{FirstName: d.FirstName, LastName: d.LastName, Email: d.Email, Phone: d.Phone, Sex: d.Sex, DateOfBirth: timestamppb.New(d.DateOfBirth), DateEmployed: timestamppb.New(d.DateEmployed), Comment: d.Comment, EvaluationReport: d.EvaluationReport, DriversLicence: d.DriversLicence, Photo: d.Avatar, OnTrip: d.OnTrip, IdNumber: uint32(d.Model.ID)}
 }
 
 func (d *Driver) FromProtos(dp *protos.Driver) *Driver {
@@ -40,6 +41,7 @@ func (d *Driver) FromProtos(dp *protos.Driver) *Driver {
 	d.EvaluationReport = dp.EvaluationReport
 	d.DriversLicence = dp.DriversLicence
 	d.Avatar = dp.Photo
-	
+	d.OnTrip = dp.OnTrip
+
 	return d
 }
