@@ -82,7 +82,14 @@ func (s *BackendService) GetTrips(payload *protos.TripsRequest, stream protos.Be
 	dbTrips := []*models.Trip{}
 	//searchString := fmt.Sprintf("%s%s%s", "%", payload.SearchQuery, "%")
 
-	result := s.db.Conn.Where("driver_id = ? OR vehicle_id = ? OR status = ?", payload.DriverId, payload.VehicleId, payload.Status).Find(&dbTrips)
+	// var result *gorm.DB
+	// if (payload != &protos.TripsRequest{}) {
+	// 	result = s.db.Conn.Where("driver_id = ? OR vehicle_id = ? OR status = ?", payload.DriverId, payload.VehicleId, payload.Status).Find(&dbTrips)
+	// } else {
+	// 	result = s.db.Conn.Find(&dbTrips)
+	// }
+
+	result := s.db.Conn.Find(&dbTrips)
 
 	for _, dbTrip := range dbTrips {
 		if err := stream.Send(dbTrip.ToProtos()); err != nil {
