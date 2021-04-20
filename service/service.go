@@ -92,7 +92,18 @@ func (s *BackendService) GetTrips(payload *protos.TripsRequest, stream protos.Be
 	result := s.db.Conn.Find(&dbTrips)
 
 	for _, dbTrip := range dbTrips {
-		if err := stream.Send(dbTrip.ToProtos()); err != nil {
+		trip := dbTrip.ToProtos()
+
+		driver := &models.Driver{}
+		s.db.Conn.First(driver, trip.Driver.IdNumber)
+
+		vehicle := &models.Vehicle{}
+		s.db.Conn.First(vehicle, trip.Vehicle.VehicleId)
+
+		trip.Vehicle = vehicle.ToProtos()
+		trip.Driver = driver.ToProtos()
+
+		if err := stream.Send(trip); err != nil {
 			return err
 		}
 	}
