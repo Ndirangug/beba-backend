@@ -51,7 +51,7 @@ func Serve() {
 	}()
 
 	go func() {
-		logger.Info("Adding grpc ui http handler on addrress %s", listener.Addr().String())
+		logger.Info("Adding grpc ui http handler on addrress")
 
 		// if err := grpcServer.Serve(listener); err != nil {
 		// 	logger.Panic("failed to serve: %v", err)
@@ -71,6 +71,7 @@ func Serve() {
 		serveMux := http.NewServeMux()
 		serveMux.Handle("/grpcui/", http.StripPrefix("/grpcui", h))
 
+		logger.Info("Starting http listener on address :%s/grpcui", grpcuiPort)
 		if err := http.ListenAndServe(fmt.Sprintf(":%s", grpcuiPort), serveMux); err != nil {
 			logger.Warn("Failed to start http listener for grpcui. Error %v", err)
 		}
