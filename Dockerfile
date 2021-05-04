@@ -36,7 +36,7 @@ RUN go mod download
 COPY . .
 
 # Build the binary.
-RUN go build -mod=readonly -v -o /bin/server ./server
+RUN go build -mod=readonly -v -o main
 
 # Use the official Debian slim image for a lean production container.
 # https://hub.docker.com/_/debian
@@ -47,10 +47,10 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /bin/server /server
+COPY --from=builder main main
 
 # Run the web service on container startup.
-CMD ["/server serve"]
+CMD ["./main serve"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]
