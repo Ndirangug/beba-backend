@@ -25,7 +25,7 @@ WORKDIR /app
 ENV GOPATH=/app
 
 RUN go get github.com/fullstorydev/grpcui/... && \
-    go install github.com/fullstorydev/grpcui/cmd/grpcui
+    go install github.com/fullstorydev/grpcui/cmd/grpcui@latest
 
 # Use the official Debian slim image for a lean production container.
 # https://hub.docker.com/_/debian
