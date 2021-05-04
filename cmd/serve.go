@@ -33,7 +33,7 @@ func Serve() {
 	reflection.Register(grpcServer)
 
 	go func() {
-		logger.Info("Starting server on addrress %s", listener.Addr().String())
+		logger.Info("Starting grpc server on addrress %s", listener.Addr().String())
 
 		if err := grpcServer.Serve(listener); err != nil {
 			logger.Panic("failed to serve: %v", err)
