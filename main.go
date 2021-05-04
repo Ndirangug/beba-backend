@@ -16,8 +16,10 @@ func main() {
 		cmd.Migrate()
 	case "seed":
 		cmd.Seed()
+	case "grpcui":
+		cmd.Grpcui()
 	default:
-		println("argument 'serve', 'seed' or 'migrate' expected")
+		println("argument 'serve', 'seed' or 'migrate' or 'grpcui' expected")
 
 	}
 }
