@@ -22,18 +22,10 @@ FROM golang:1.16-buster as builder
 
 # Create and change to the app directory.
 WORKDIR /app
+ENV GOPATH=/app
 
-# Retrieve application dependencies.
-# This allows the container build to reuse cached dependencies.
-# Expecting to copy go.mod and if present go.sum.
-COPY go.mod go.sum ./
-RUN go mod download
-
-# Copy local code to the container image.
-COPY . .
-
-# Build the binary.
-RUN go build -mod=readonly -v -o main 
+RUN go get github.com/fullstorydev/grpcui/... && \
+    go install github.com/fullstorydev/grpcui/cmd/grpcui
 
 # Use the official Debian slim image for a lean production container.
 # https://hub.docker.com/_/debian
@@ -44,14 +36,11 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /app/main /service
-
-# Set DATABASE_URL to heroku postres instance
-ENV DATABASE_URL=postgres://izxhsxrehessof:ac88daf55eb9282136f65c13072001d39980cbf5dc39152e9f39a7ce3897bbd2@ec2-18-214-195-34.compute-1.amazonaws.com:5432/d9tforbs0co1mb
+COPY --from=builder /app/bin/grpcui /grpcui
 
 
 # Run the web service on container startup.
-CMD ["/service", "grpcui"]
+CMD ["/grpcui", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]

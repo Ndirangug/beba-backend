@@ -19,6 +19,9 @@ serve:
 	go run main.go serve && \
 	gnome-terminal -- make proxy
 
+grpcui:
+	go run main.go grpcui
+
 seed:
 	make postgres && \
 	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
@@ -45,6 +48,7 @@ pg_credentials:
 test_cloud_run:
 	grpcurl  beba-grpc-p2gh3d44pq-uc.a.run.app:443 list
 
-
 # test:
 #     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
+#	https://beba-grpc-ui-p2gh3d44pq-uc.a.run.app grpcui
+#	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app grpcwebproxy
