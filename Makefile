@@ -42,10 +42,10 @@ push_db:
 pg_credentials:
 	heroku pg:credentials:url DATABASE --app beba-backend
 
+test_cloud_run:
+	grpcurl  beba-grpc-p2gh3d44pq-uc.a.run.app:443 list
+
 
 # test:
 #     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
 # grpcurl --plaintext -d '{"tripId": 4}'  localhost:50051 beba_backend.BebaBackend.NewTrip
-#     
-#	grpcurl  beba-grpc-p2gh3d44pq-uc.a.run.app:8080 list
-#	grpcurl --plaintext beba-grpc-p2gh3d44pq-uc.a.run.app:8080 list
