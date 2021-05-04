@@ -47,10 +47,10 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder ./main .
+COPY --from=builder maain serve
 
 # Run the web service on container startup.
-CMD ["./main serve"]
+CMD ["./serve serve"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]
