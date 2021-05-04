@@ -14,7 +14,7 @@ postgres:
 serve:
 	sudo service nginx start && \
 	make postgres && \
-	export PORT=:50051 && \
+	export PORT=50051 && \
 	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
 	go run main.go serve && \
 	gnome-terminal -- make proxy

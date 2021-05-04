@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"net"
 	"os"
 	"os/signal"
@@ -17,11 +18,11 @@ func Serve() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = ":8080"
+		port = "8080"
 		logger.Info("Defaulting to port %s", port)
 	}
 
-	listener, err := net.Listen("tcp", port)
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	if err != nil {
 		logger.Panic("Failed to listen: %v", err)
 	}
