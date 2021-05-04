@@ -4,7 +4,13 @@ LABEL maintainer="esplo@users.noreply.github.com"
 RUN apk update && apk upgrade && \
     apk add --no-cache git openssh openssl gettext
 
-RUN go get -u github.com/improbable-eng/grpc-web/go/grpcwebproxy
+RUN GOPATH=~/go ; export GOPATH
+RUN git clone https://github.com/improbable-eng/grpc-web.git $GOPATH/src/github.com/improbable-eng/grpc-web
+RUN cd $GOPATH/src/github.com/improbable-eng/grpc-web
+# after installing dep
+RUN dep ensure 
+# installs into $GOPATH/bin/grpcwebproxy
+RUN go install ./go/grpcwebproxy 
 
 # create certificate
 RUN mkdir -p /tmp/ \
@@ -15,7 +21,7 @@ RUN mkdir -p /tmp/ \
 FROM alpine:latest
 LABEL maintainer="esplo@users.noreply.github.com"
 
-COPY --from=builder /go/bin/grpcwebproxy .
+COPY --from=builder $GOPATH/bin/grpcwebproxy .
 COPY --from=builder /tmp/localhost.crt /tmp/localhost.key ./
 
 CMD [ \
