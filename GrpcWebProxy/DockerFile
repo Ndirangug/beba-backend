@@ -15,7 +15,6 @@ COPY --from=builder dist/grpcwebproxy-v0.14.0-linux-x86_64 grpcwebproxy
 CMD [ \
     "/grpcwebproxy", \
     "--backend_tls_noverify", \
-    "./grpcwebproxy", \
     "--use_websockets", \
     "--run_tls_server=false", \
     "--server_http_max_read_timeout=60s", \
