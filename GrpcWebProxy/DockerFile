@@ -13,7 +13,7 @@ RUN apk update
 COPY --from=builder dist/grpcwebproxy-v0.14.0-linux-x86_64 grpcwebproxy
 
 CMD [ \
-    "grpcwebproxy", \
+    "/grpcwebproxy", \
     "--backend_tls_noverify", \
     "./grpcwebproxy", \
     "--use_websockets", \
