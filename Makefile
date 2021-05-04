@@ -1,7 +1,8 @@
 proxy:
 	grpcwebproxy \
-    --backend_addr=localhost:50051 \
+    --backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443 \
     --backend_tls_noverify \
+    --backend_tls=true   \
 	--run_tls_server=false \
 	--use_websockets \
 	--allow_all_origins \

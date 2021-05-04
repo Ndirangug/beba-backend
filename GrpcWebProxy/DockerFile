@@ -16,6 +16,7 @@ CMD [ \
     "/grpcwebproxy", \
     "--backend_tls_noverify", \
     "--use_websockets", \
+    "--backend_tls=true", \
     "--allow_all_origins", \
     "--run_tls_server=false", \
     "--server_http_max_read_timeout=60s", \
