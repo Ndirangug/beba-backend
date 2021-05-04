@@ -50,7 +50,7 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
 COPY --from=builder /app/main /service
 
 # Run the web service on container startup.
-CMD ["/service serve"]
+CMD ["/service"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]
