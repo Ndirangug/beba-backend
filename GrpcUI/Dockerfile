@@ -40,7 +40,7 @@ COPY --from=builder /app/bin/grpcui /grpcui
 
 
 # Run the web service on container startup.
-CMD ["/grpcui", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]
+CMD ["/grpcui", "-port", "$PORT", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]
