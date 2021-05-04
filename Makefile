@@ -48,4 +48,3 @@ test_cloud_run:
 
 # test:
 #     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
-# grpcurl --plaintext -d '{"tripId": 4}'  localhost:50051 beba_backend.BebaBackend.NewTrip
