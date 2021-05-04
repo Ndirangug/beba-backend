@@ -47,7 +47,7 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder maain serve
+COPY --from=builder /bin/main serve
 
 # Run the web service on container startup.
 CMD ["./serve serve"]
