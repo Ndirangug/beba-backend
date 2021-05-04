@@ -20,6 +20,9 @@
 # https://hub.docker.com/_/golang
 FROM golang:1.16-buster as builder
 
+# Set DATABASE_URL to heroku postres instance
+ENV DATABASE_URL=postgres://izxhsxrehessof:ac88daf55eb9282136f65c13072001d39980cbf5dc39152e9f39a7ce3897bbd2@ec2-18-214-195-34.compute-1.amazonaws.com:5432/d9tforbs0co1mb
+
 # Create and change to the app directory.
 WORKDIR /app
 
