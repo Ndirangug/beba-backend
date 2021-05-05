@@ -38,6 +38,8 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/bin/grpcui /grpcui
 
+EXPOSE 8080/tcp
+EXPOSE 8080/udp
 
 # Run the web service on container startup.
 CMD ["/grpcui", "-port", "$PORT", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]

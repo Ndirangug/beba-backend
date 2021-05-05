@@ -12,6 +12,9 @@ RUN apk update
 
 COPY --from=builder dist/grpcwebproxy-v0.14.0-linux-x86_64 grpcwebproxy
 
+EXPOSE 8080/tcp
+EXPOSE 8080/udp
+
 CMD [ \
     "/grpcwebproxy", \
     "--backend_tls_noverify", \
