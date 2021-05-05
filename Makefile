@@ -52,4 +52,4 @@ test_cloud_run:
 # test:
 #     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
 #	https://beba-grpc-ui-p2gh3d44pq-uc.a.run.app grpcui
-#	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app grpcwebproxyy
+#	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app:8080 grpcwebproxyy
