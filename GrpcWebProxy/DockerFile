@@ -22,7 +22,7 @@ CMD [ \
     "--backend_tls=true", \
     "--allow_all_origins", \
     "--run_tls_server=false", \
-    "--server_http_tls_port=${PORT}", \
+    "--server_http_tls_port=$PORT", \
     "--server_http_max_read_timeout=60s", \
     "--backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443" \
 ]
