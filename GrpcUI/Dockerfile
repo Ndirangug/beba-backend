@@ -42,7 +42,7 @@ EXPOSE 8080/tcp
 EXPOSE 8080/udp
 
 # Run the web service on container startup.
-CMD ["/grpcui", "-port", "$PORT", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]
+CMD ["/grpcui", "-port", "$PORT", "-bind", "0.0.0.0", "beba-grpc-p2gh3d44pq-uc.a.run.app:443"]
 
 # [END run_grpc_dockerfile]
 # [END cloudrun_grpc_dockerfile]
