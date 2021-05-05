@@ -6,6 +6,7 @@ proxy:
 	--run_tls_server=false \
 	--use_websockets \
 	--allow_all_origins \
+	--server_http_tls_port=${PORT} \
 	--server_http_max_read_timeout=60s
 
 postgres:
@@ -50,6 +51,5 @@ test_cloud_run:
 	grpcurl  beba-grpc-p2gh3d44pq-uc.a.run.app:443 list
 
 # test:
-#     grpcurl --plaintext -d '{"idNumber":4, "searchQuery":"ndirangu"}'  localhost:50051 beba_backend.BebaBackend.GetDrivers
 #	https://beba-grpc-ui-p2gh3d44pq-uc.a.run.app grpcui
 #	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app:8080 grpcwebproxyy
