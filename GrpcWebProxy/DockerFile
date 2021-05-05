@@ -15,6 +15,9 @@ COPY --from=builder dist/grpcwebproxy-v0.14.0-linux-x86_64 grpcwebproxy
 EXPOSE 8080/tcp
 EXPOSE 8080/udp
 
+ARG PORT=8080
+ENV PORT=$PORT
+
 CMD [ \
     "/grpcwebproxy", \
     "--backend_tls_noverify", \
@@ -22,7 +25,7 @@ CMD [ \
     "--backend_tls=true", \
     "--allow_all_origins", \
     "--run_tls_server=false", \
-    "--server_http_tls_port=$PORT", \
+    "--server_http_tls_port=${PORT}", \
     "--server_http_max_read_timeout=60s", \
     "--backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443" \
 ]
