@@ -12,7 +12,8 @@ The grpc service runs CRUD operations against a postgresql database.
 - A php script was used as a proxy to a payment api [Ipay Africa](https://ipayafrica.com/api/)
 
 ## Cloud Deployment
-The Go grpc service, grpcwebproxy and php payment proxy are each deployed to a Google Cloud Run instance. A Dockerfile exists for each of them and a CI pipeline has been setup with Google Cloud Build
+The Go grpc service, grpcwebproxy and php payment proxy are each deployed to a Google Cloud Run instance. A Dockerfile exists for each of them and a CI pipeline has been setup with Google Cloud Build and Github
+A Heroku Postgres Instance has been used for the database.
 ### Test the grpc service on cloud run
 The [grpcurl](https://github.com/fullstorydev/grpcurl) tool may be used to send requests to the hosted grpc service on cloud run
 ```bash
