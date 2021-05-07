@@ -6,7 +6,7 @@ The grpc service runs CRUD operations against a postgresql database.
 ## Technologies Used 
 - Golang
 - GRPC
-- [GRPC Web Proxy](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy) to make the service compatible with the frontend ([https://github.com/ndirangug/beba-frontend](https://github.com/ndirangug/beba-frontend)) a Vuejs web app.
+- [GRPC Web Proxy](https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy) to make the service compatible with the frontend ([https://github.com/ndirangug/beba-frontend](https://github.com/ndirangug/beba)) a Vuejs web app.
 - Docker was  used to continerize the application and deploy it to Google Cloud Run.
 - Makfile was used to automate some repetitive tasks on local dev environement
 - A php script[]() was used as a proxy to a payment api [Ipay Africa](https://ipayafrica.com/api/)
