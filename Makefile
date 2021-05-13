@@ -1,4 +1,5 @@
 proxy:
+	export PORT=8080 && \
 	grpcwebproxy \
     --backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443 \
     --backend_tls_noverify \
@@ -52,4 +53,4 @@ test_cloud_run:
 
 # test:
 #	https://beba-grpc-ui-p2gh3d44pq-uc.a.run.app grpcui
-#	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app:8080 grpcwebproxyy
+#	https://beba-grpc-web-proxy-p2gh3d44pq-uc.a.run.app grpcwebproxyy
