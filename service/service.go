@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/ndirangug/beba-backend/db"
 	"github.com/ndirangug/beba-backend/logger"
@@ -154,7 +155,7 @@ func (s *BackendService) NewTrip(ctx context.Context, payload *protos.Trip) (*pr
 }
 
 func (s *BackendService) CancelTrip(ctx context.Context, tripId *protos.RecordId) (*protos.WriteRecordResponse, error) {
-	dbTrip := &models.Trip{Model: gorm.Model{ID: uint(tripId.Id)}, Status: "cancelled"}
+	dbTrip := &models.Trip{Model: gorm.Model{ID: uint(tripId.Id)}, TimeEnd: time.Time{}, Status: "cancelled"}
 	result := s.db.Conn.UpdateColumns(&dbTrip)
 
 	response := &protos.WriteRecordResponse{}

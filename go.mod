@@ -3,6 +3,7 @@ module github.com/ndirangug/beba-backend
 go 1.15
 
 require (
+	github.com/bxcodec/faker v2.0.1+incompatible
 	github.com/bxcodec/faker/v3 v3.6.0
 	github.com/fullstorydev/grpcui v1.1.0
 	github.com/golang/protobuf v1.4.3
