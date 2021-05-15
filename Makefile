@@ -19,7 +19,6 @@ proxy:
 # 	--allow_all_origins \
 # 	--server_http_max_read_timeout=60s
 
-
 postgres:
 	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
 	sudo service postgresql start
