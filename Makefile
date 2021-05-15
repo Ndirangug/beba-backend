@@ -1,23 +1,23 @@
-# proxy:
-# 	export PORT=8080 && \
-# 	grpcwebproxy \
-#     --backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443 \
-#     --backend_tls_noverify \
-#     --backend_tls=true   \
-# 	--run_tls_server=false \
-# 	--use_websockets \
-# 	--allow_all_origins \
-# 	--server_http_tls_port=${PORT} \
-# 	--server_http_max_read_timeout=60s
-
 proxy:
+	export PORT=8080 && \
 	grpcwebproxy \
-    --backend_addr=localhost:50051 \
+    --backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443 \
     --backend_tls_noverify \
+    --backend_tls=true   \
 	--run_tls_server=false \
 	--use_websockets \
 	--allow_all_origins \
+	--server_http_tls_port=${PORT} \
 	--server_http_max_read_timeout=60s
+
+# proxy:
+# 	grpcwebproxy \
+#     --backend_addr=localhost:50051 \
+#     --backend_tls_noverify \
+# 	--run_tls_server=false \
+# 	--use_websockets \
+# 	--allow_all_origins \
+# 	--server_http_max_read_timeout=60s
 
 
 postgres:
