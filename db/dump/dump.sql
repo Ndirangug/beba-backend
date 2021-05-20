@@ -5,31 +5,7 @@
 -- Dumped from database version 13.2 (Ubuntu 13.2-1.pgdg20.04+1)
 -- Dumped by pg_dump version 13.2 (Ubuntu 13.2-1.pgdg20.04+1)
 
--- Started on 2021-05-15 21:40:53 EAT
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-DROP DATABASE beba;
---
--- TOC entry 4011 (class 1262 OID 1524127)
--- Name: beba; Type: DATABASE; Schema: -; Owner: beba_backend
---
-
-CREATE DATABASE beba WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_US.UTF-8';
-
-
-ALTER DATABASE beba OWNER TO beba_backend;
-
-\connect beba
+-- Started on 2021-05-20 09:20:40 EAT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -48,7 +24,7 @@ SET default_table_access_method = heap;
 
 --
 -- TOC entry 200 (class 1259 OID 5120188)
--- Name: drivers; Type: TABLE; Schema: public; Owner: beba_backend
+-- Name: drivers; Type: TABLE; Schema: public; Owner: georgen
 --
 
 CREATE TABLE public.drivers (
@@ -71,11 +47,11 @@ CREATE TABLE public.drivers (
 );
 
 
-ALTER TABLE public.drivers OWNER TO beba_backend;
+ALTER TABLE public.drivers OWNER TO georgen;
 
 --
 -- TOC entry 201 (class 1259 OID 5120194)
--- Name: drivers_id_seq; Type: SEQUENCE; Schema: public; Owner: beba_backend
+-- Name: drivers_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
 --
 
 CREATE SEQUENCE public.drivers_id_seq
@@ -86,12 +62,12 @@ CREATE SEQUENCE public.drivers_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.drivers_id_seq OWNER TO beba_backend;
+ALTER TABLE public.drivers_id_seq OWNER TO georgen;
 
 --
--- TOC entry 4014 (class 0 OID 0)
+-- TOC entry 4012 (class 0 OID 0)
 -- Dependencies: 201
--- Name: drivers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: beba_backend
+-- Name: drivers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
 --
 
 ALTER SEQUENCE public.drivers_id_seq OWNED BY public.drivers.id;
@@ -99,7 +75,7 @@ ALTER SEQUENCE public.drivers_id_seq OWNED BY public.drivers.id;
 
 --
 -- TOC entry 202 (class 1259 OID 5120196)
--- Name: trips; Type: TABLE; Schema: public; Owner: beba_backend
+-- Name: trips; Type: TABLE; Schema: public; Owner: georgen
 --
 
 CREATE TABLE public.trips (
@@ -121,11 +97,11 @@ CREATE TABLE public.trips (
 );
 
 
-ALTER TABLE public.trips OWNER TO beba_backend;
+ALTER TABLE public.trips OWNER TO georgen;
 
 --
 -- TOC entry 203 (class 1259 OID 5120202)
--- Name: trips_id_seq; Type: SEQUENCE; Schema: public; Owner: beba_backend
+-- Name: trips_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
 --
 
 CREATE SEQUENCE public.trips_id_seq
@@ -136,12 +112,12 @@ CREATE SEQUENCE public.trips_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.trips_id_seq OWNER TO beba_backend;
+ALTER TABLE public.trips_id_seq OWNER TO georgen;
 
 --
--- TOC entry 4015 (class 0 OID 0)
+-- TOC entry 4013 (class 0 OID 0)
 -- Dependencies: 203
--- Name: trips_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: beba_backend
+-- Name: trips_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
 --
 
 ALTER SEQUENCE public.trips_id_seq OWNED BY public.trips.id;
@@ -149,7 +125,7 @@ ALTER SEQUENCE public.trips_id_seq OWNED BY public.trips.id;
 
 --
 -- TOC entry 204 (class 1259 OID 5120204)
--- Name: vehicles; Type: TABLE; Schema: public; Owner: beba_backend
+-- Name: vehicles; Type: TABLE; Schema: public; Owner: georgen
 --
 
 CREATE TABLE public.vehicles (
@@ -172,11 +148,11 @@ CREATE TABLE public.vehicles (
 );
 
 
-ALTER TABLE public.vehicles OWNER TO beba_backend;
+ALTER TABLE public.vehicles OWNER TO georgen;
 
 --
 -- TOC entry 205 (class 1259 OID 5120210)
--- Name: vehicles_id_seq; Type: SEQUENCE; Schema: public; Owner: beba_backend
+-- Name: vehicles_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
 --
 
 CREATE SEQUENCE public.vehicles_id_seq
@@ -187,12 +163,12 @@ CREATE SEQUENCE public.vehicles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.vehicles_id_seq OWNER TO beba_backend;
+ALTER TABLE public.vehicles_id_seq OWNER TO georgen;
 
 --
--- TOC entry 4016 (class 0 OID 0)
+-- TOC entry 4014 (class 0 OID 0)
 -- Dependencies: 205
--- Name: vehicles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: beba_backend
+-- Name: vehicles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
 --
 
 ALTER SEQUENCE public.vehicles_id_seq OWNED BY public.vehicles.id;
@@ -200,7 +176,7 @@ ALTER SEQUENCE public.vehicles_id_seq OWNED BY public.vehicles.id;
 
 --
 -- TOC entry 3852 (class 2604 OID 5120212)
--- Name: drivers id; Type: DEFAULT; Schema: public; Owner: beba_backend
+-- Name: drivers id; Type: DEFAULT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.drivers_id_seq'::regclass);
@@ -208,7 +184,7 @@ ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.driv
 
 --
 -- TOC entry 3853 (class 2604 OID 5120213)
--- Name: trips id; Type: DEFAULT; Schema: public; Owner: beba_backend
+-- Name: trips id; Type: DEFAULT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.trips ALTER COLUMN id SET DEFAULT nextval('public.trips_id_seq'::regclass);
@@ -216,7 +192,7 @@ ALTER TABLE ONLY public.trips ALTER COLUMN id SET DEFAULT nextval('public.trips_
 
 --
 -- TOC entry 3854 (class 2604 OID 5120214)
--- Name: vehicles id; Type: DEFAULT; Schema: public; Owner: beba_backend
+-- Name: vehicles id; Type: DEFAULT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.vehicles ALTER COLUMN id SET DEFAULT nextval('public.vehicles_id_seq'::regclass);
@@ -225,7 +201,7 @@ ALTER TABLE ONLY public.vehicles ALTER COLUMN id SET DEFAULT nextval('public.veh
 --
 -- TOC entry 4000 (class 0 OID 5120188)
 -- Dependencies: 200
--- Data for Name: drivers; Type: TABLE DATA; Schema: public; Owner: beba_backend
+-- Data for Name: drivers; Type: TABLE DATA; Schema: public; Owner: georgen
 --
 
 COPY public.drivers (id, created_at, updated_at, deleted_at, first_name, last_name, email, phone, sex, date_of_birth, date_employed, comment, evaluation_report, drivers_licence, avatar, on_trip) FROM stdin;
@@ -242,7 +218,7 @@ COPY public.drivers (id, created_at, updated_at, deleted_at, first_name, last_na
 20	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Alfreda	Abernathy	DCSgRZM@MPvGPir.com	101-376-2594	male	2016-12-05 14:51:25+00	1971-10-01 07:06:41+00	Accusantium consequatur perferendis voluptatem sit aut.	https://LarroxR.info/YlPMftq	https://VyGXxaR.info/mxDoMfH	https://i.pravatar.cc/150?img=59	\N
 3	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Muhammad	Lowe	xZIThhM@mtthuvt.com	210-963-4785	female	2053-01-10 11:44:39+00	2013-03-03 14:00:14+00	Aut voluptatem perferendis consequatur sit accusantium.	https://www.YvZryIY.ru/	https://SILSKBJ.ru/	https://i.pravatar.cc/150?img=44	\N
 5	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Darren	Davis	uihiuhuihi	510-273-8916	female	2045-03-03 03:23:13+00	2051-01-30 04:41:29+00	Aut voluptatem accusantium perferendis sit consequatur.	http://www.HvQTdAW.net/QbfIYAM	http://www.unNQeUD.com/	https://i.pravatar.cc/150?img=28	\N
-2	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Stone	Daniel	GjfDeJn@BjrDysF.org	134-592-1068	female	1985-07-11 14:20:48+00	2037-06-16 01:05:43+00	Perferendis aut voluptatem sit consequatur accusantium.	http://www.BSYqlrX.ru/	http://puOBpsG.biz/fFHkdgv.html	https://i.pravatar.cc/150?img=48	\N
+2	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	George	Ndirangu	ndirangu.mepawa@gmail.com	134-592-1068	female	1985-07-11 14:20:48+00	2037-06-16 01:05:43+00	Perferendis aut voluptatem sit consequatur accusantium.	http://www.BSYqlrX.ru/	http://puOBpsG.biz/fFHkdgv.html	https://i.pravatar.cc/150?img=48	\N
 9	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	George	Kabucho	kabuchogeorge3@gmail.com	510-327-6149	female	1989-05-01 13:18:24+00	2053-11-28 15:50:46+00	Consequatur voluptatem aut accusantium perferendis sit.	http://qNAIblm.ru/SvgKIOe.php	https://XBaZruj.biz/	https://i.pravatar.cc/150?img=33	\N
 6	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Kahu	Koch	shazkawho@gmail.com	691-045-7312	female	1997-04-05 15:54:12+00	2014-03-17 05:11:59+00	Sit accusantium consequatur perferendis aut voluptatem.	http://XXYPenm.net/TBTbUMl.php	https://www.qUQSlCi.ru/	https://i.pravatar.cc/150?img=7	\N
 4	2021-04-13 11:50:17.881038+00	2021-04-13 11:50:17.881038+00	\N	Gerald	Lowe	fJImBGo@fpkEwiU.net	428-135-1069	male	2007-09-05 17:51:17+00	1992-06-18 06:39:38+00	Accusantium voluptatem consequatur sit perferendis aut.	https://ZgYZCef.biz/	https://www.FgDREcZ.org/qNFQGNp	https://i.pravatar.cc/150?img=51	\N
@@ -254,10 +230,11 @@ COPY public.drivers (id, created_at, updated_at, deleted_at, first_name, last_na
 --
 -- TOC entry 4002 (class 0 OID 5120196)
 -- Dependencies: 202
--- Data for Name: trips; Type: TABLE DATA; Schema: public; Owner: beba_backend
+-- Data for Name: trips; Type: TABLE DATA; Schema: public; Owner: georgen
 --
 
 COPY public.trips (id, created_at, updated_at, deleted_at, driver_id, vehicle_id, time_start, time_end, time_expected_start, time_expected_end, latitude_begin, longitude_begin, latitude_end, longitude_end, status) FROM stdin;
+71	2021-05-20 06:19:11.948522+00	2021-05-20 06:19:11.948522+00	\N	14	5	1970-01-01 00:00:00+00	1970-01-01 00:00:00+00	2021-05-29 00:00:00+00	2021-06-01 00:00:00+00	-3.026717750569187	38.41236818383902	-0.10576312180160129	40.38990724633902	scheduled
 29	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	11	4	2020-07-11 18:44:20.433025+00	2020-07-14 18:44:20.433025+00	2020-07-11 17:44:20.433025+00	2020-07-14 17:44:20.433025+00	1.23587426390203	-34.9169154426123	0.536935339832414	-37.7654221590046	ongoing
 23	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	7	12	2014-05-03 08:24:39.11039+00	\N	2014-05-03 07:24:39.11039+00	2014-05-06 07:24:39.11039+00	-1.13732599448145	-35.7982550671009	1.14351243795439	-34.4025759132926	cancelled
 24	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	10	3	2017-10-02 23:24:28.457027+00	\N	2017-10-02 22:24:28.457027+00	2017-10-05 22:24:28.457027+00	-4.93879541417495	-36.700732051406	-2.28170386695563	-34.96985411404	cancelled
@@ -274,39 +251,21 @@ COPY public.trips (id, created_at, updated_at, deleted_at, driver_id, vehicle_id
 41	2020-04-01 22:31:14.132714+00	2020-04-01 22:31:14.132714+00	\N	20	7	2016-03-12 16:20:33.584596+00	2016-03-15 16:20:33.584596+00	2016-03-12 15:20:33.584596+00	2016-03-15 15:20:33.584596+00	5.61694314668298	-37.6077219792677	-1.66238195510006	-33.5465980014636	
 42	2020-04-01 18:26:31.718958+00	2020-04-01 18:26:31.718958+00	\N	11	10	2018-08-24 18:35:54.461186+00	2018-08-27 18:35:54.461186+00	2018-08-24 17:35:54.461186+00	2018-08-27 17:35:54.461186+00	-0.882016927191888	-36.3231984707345	2.27834285440301	-33.5657092650166	
 30	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	13	10	2019-01-07 03:50:35.38584+00	\N	2019-01-07 02:50:35.38584+00	2019-01-10 02:50:35.38584+00	0.829393666923007	-35.3491250967299	-0.725863431061764	-33.9483379101886	cancelled
-56	2021-05-03 20:37:02.231199+00	2021-05-03 20:37:02.231199+00	\N	3	8	\N	\N	2021-09-30 06:44:09.218927+00	2021-10-03 06:44:09.218927+00	3.35065567968298	-33.3832930918583	-1.16312233131307	-36.0800745815993	scheduled
+68	2021-05-20 05:41:28.872889+00	2021-05-20 05:41:28.872889+00	\N	14	5	1970-01-01 00:00:00+00	1970-01-01 00:00:00+00	2021-05-28 00:00:00+00	2021-05-31 00:00:00+00	0.005318899269582922	40.52462810059059	1.6256123469032169	35.43300587331495	scheduled
 36	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	4	3	\N	\N	2021-09-07 17:26:37.166195+00	2021-09-10 17:26:37.166195+00	1.11459191784115	-33.8957517368156	0.959436373042156	-36.7577629168686	cancelled
 35	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	6	5	2016-11-17 23:48:59.738691+00	\N	2016-11-17 22:48:59.738691+00	2016-11-20 22:48:59.738691+00	2.24093324892929	-36.5623966188841	-3.6978082369655	-34.6255260716281	cancelled
+70	2021-05-20 06:00:58.901461+00	2021-05-20 06:00:58.901461+00	\N	14	5	1970-01-01 00:00:00+00	1970-01-01 00:00:00+00	2021-05-28 00:00:00+00	2021-05-31 00:00:00+00	1.2082535813278172	39.71966428679714	-0.5055174849648103	36.269657541527344	scheduled
 37	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	10	9	2014-03-13 09:26:19.710567+00	\N	2014-03-13 08:26:19.710567+00	2014-03-16 08:26:19.710567+00	4.50447443004802	-36.9799625606569	5.51449872125686	-35.7676846281632	cancelled
 34	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	9	7	2018-11-21 12:05:28.483775+00	\N	2018-11-21 11:05:28.483775+00	2018-11-24 11:05:28.483775+00	2.27299081587359	-34.6017616197101	-2.64202560399937	-37.5899812187103	cancelled
 22	2021-04-18 06:57:46.257535+00	2021-04-18 06:57:46.257535+00	\N	18	14	2016-01-19 12:45:41.171103+00	\N	2016-01-19 11:45:41.171103+00	2016-01-22 11:45:41.171103+00	4.64751713669687	-37.8079051040954	1.9967072999748	-35.6194549382828	cancelled
-50	2021-05-03 18:03:13.536215+00	2021-05-03 18:03:13.536215+00	\N	14	11	2014-03-26 19:40:29.524757+00	\N	2014-03-26 18:40:29.524757+00	2014-03-29 18:40:29.524757+00	-2.1675137902807	-34.6819418818115	-2.47956146079559	-34.9349892107109	cancelled
-54	2021-05-03 20:35:13.712548+00	2021-05-03 20:35:13.712548+00	\N	7	8	2017-08-08 07:18:58.936449+00	\N	2017-08-08 06:18:58.936449+00	2017-08-11 06:18:58.936449+00	-1.71715542153615	-37.8134994996804	-2.73249353188636	-35.4265967198763	cancelled
-43	2020-04-01 18:53:41.790721+00	2020-04-01 18:53:41.790721+00	\N	7	6	2017-02-24 13:52:51.626643+00	2017-02-27 13:52:51.626643+00	2017-02-24 12:52:51.626643+00	2017-02-27 12:52:51.626643+00	1.62694893428944	-33.466454049664	-2.74017434946088	-33.2200662669066	
-44	2020-04-01 18:56:29.320063+00	2020-04-01 18:56:29.320063+00	\N	14	7	2018-08-16 19:56:44.141738+00	2018-08-19 19:56:44.141738+00	2018-08-16 18:56:44.141738+00	2018-08-19 18:56:44.141738+00	5.06713784172223	-34.7178827174791	1.79880049250274	-33.7687079558417	
-45	2020-04-01 19:28:45.866728+00	2020-04-01 19:28:45.866728+00	\N	2	10	2018-01-10 15:08:40.294734+00	2018-01-13 15:08:40.294734+00	2018-01-10 14:08:40.294734+00	2018-01-13 14:08:40.294734+00	2.07745370313522	-33.1953117069182	-2.37712326149864	-36.4335246324985	
-46	2020-04-01 19:30:57.811464+00	2020-04-01 19:30:57.811464+00	\N	11	9	2018-03-14 21:41:16.45146+00	2018-03-17 21:41:16.45146+00	2018-03-14 20:41:16.45146+00	2018-03-17 20:41:16.45146+00	5.7725209957201	-35.7511789410435	1.85280862634197	-36.2720136914502	
-47	2020-04-01 19:32:21.002795+00	2020-04-01 19:32:21.002795+00	\N	17	7	2018-06-07 02:21:11.041463+00	2018-06-10 02:21:11.041463+00	2018-06-07 01:21:11.041463+00	2018-06-10 01:21:11.041463+00	5.94490453220073	-37.9184777859054	-3.90756068633376	-34.7056439116866	
-48	2020-04-01 21:34:18.844916+00	2020-04-01 21:34:18.844916+00	\N	4	14	2014-02-26 02:52:22.084+00	2014-03-01 02:52:22.084+00	2014-02-26 01:52:22.084+00	2014-03-01 01:52:22.084+00	-4.54841322616238	-37.3166022111389	2.08800565976744	-37.0054115701483	
-49	2020-04-02 00:16:22.742274+00	2020-04-02 00:16:22.742274+00	\N	16	8	2021-03-03 21:23:06.801598+00	2021-03-06 21:23:06.801598+00	2021-03-03 20:23:06.801598+00	2021-03-06 20:23:06.801598+00	-3.52589800253425	-33.0197174822092	-3.66079099339469	-36.9391884014159	
-53	2021-05-03 20:32:27.959978+00	2021-05-03 20:32:27.959978+00	\N	17	4	2015-01-17 19:19:21.914151+00	2015-01-20 19:19:21.914151+00	2015-01-17 18:19:21.914151+00	2015-01-20 18:19:21.914151+00	0.141308325095704	-34.3816508587178	-3.70356030942902	-37.5761357088999	scheduled
-58	2021-05-14 15:17:35.522276+00	2021-05-14 15:17:35.522276+00	\N	5	10	2016-01-23 11:08:26.814253+00	2016-01-26 11:08:26.814253+00	2016-01-23 10:08:26.814253+00	2016-01-26 10:08:26.814253+00	3.6581022024883	-34.2233260395379	3.55087806904439	-35.3014537754029	scheduled
-59	2021-05-14 15:18:55.191677+00	2021-05-14 15:18:55.191677+00	\N	5	8	2015-11-07 22:15:50.812249+00	2015-11-10 22:15:50.812249+00	2015-11-07 21:15:50.812249+00	2015-11-10 21:15:50.812249+00	3.35629479958811	-35.8450204361234	-2.25763269937958	-36.5152183564253	scheduled
-60	2021-05-14 15:20:03.904921+00	2021-05-14 15:20:03.904921+00	\N	15	4	2018-01-28 00:15:02.008447+00	2018-01-31 00:15:02.008447+00	2018-01-27 23:15:02.008447+00	2018-01-30 23:15:02.008447+00	-3.98653806173083	-33.9119479576309	-2.72701358744206	-33.7749561555528	scheduled
-61	2021-05-14 15:23:26.937779+00	2021-05-14 15:23:26.937779+00	\N	5	5	2015-10-02 07:37:38.178065+00	2015-10-05 07:37:38.178065+00	2015-10-02 06:37:38.178065+00	2015-10-05 06:37:38.178065+00	1.26930946900867	-36.1854790430081	-2.9444552389727	-35.092733465198	scheduled
-62	2021-05-14 15:25:15.40055+00	2021-05-14 15:25:15.40055+00	\N	10	8	2018-05-30 16:09:12.46511+00	2018-06-02 16:09:12.46511+00	2018-05-30 15:09:12.46511+00	2018-06-02 15:09:12.46511+00	-2.48619954464009	-37.8131963634344	0.163544276596927	-34.5605562953753	scheduled
-63	2021-05-14 15:27:28.086638+00	2021-05-14 15:27:28.086638+00	\N	14	5	2018-05-18 14:37:39.405021+00	2018-05-21 14:37:39.405021+00	2018-05-18 13:37:39.405021+00	2018-05-21 13:37:39.405021+00	-4.90681997905432	-33.8503161309502	3.8346623266091	-34.0963609955579	scheduled
-51	2021-05-03 20:21:01.858441+00	2021-05-03 20:21:01.858441+00	\N	20	12	2014-10-02 11:30:03.637256+00	\N	2014-10-02 10:30:03.637256+00	2014-10-05 10:30:03.637256+00	3.05469420563649	-33.9360234732812	-0.249980944852947	-35.0672412875106	cancelled
-52	2021-05-03 20:29:46.98903+00	2021-05-03 20:29:46.98903+00	\N	14	12	2017-06-22 19:07:29.937128+00	\N	2017-06-22 18:07:29.937128+00	2017-06-25 18:07:29.937128+00	-0.236808396884815	-33.0860930582542	2.03730711769275	-34.3441154578011	cancelled
-55	2021-05-03 20:36:09.823129+00	2021-05-03 20:36:09.823129+00	\N	3	11	2017-11-15 03:01:35.797055+00	\N	2017-11-15 02:01:35.797055+00	2017-11-18 02:01:35.797055+00	2.01725684866029	-33.0547852613067	-4.81744775118571	-34.5069658949723	cancelled
-57	2021-05-03 20:40:09.582408+00	2021-05-03 20:40:09.582408+00	\N	19	11	\N	\N	2021-12-08 23:21:47.379216+00	2021-12-11 23:21:47.379216+00	-0.427235868794813	-33.2532908539182	-4.12751147519365	-36.7831368856047	cancelled
+69	2021-05-20 05:44:04.555864+00	2021-05-20 05:44:04.555864+00	\N	14	5	1970-01-01 00:00:00+00	1970-01-01 00:00:00+00	2021-05-28 00:00:00+00	2021-05-31 00:00:00+00	-0.01891249573968406	35.571240704183566	-1.9740882125412396	36.823682110433566	scheduled
 \.
 
 
 --
 -- TOC entry 4004 (class 0 OID 5120204)
 -- Dependencies: 204
--- Data for Name: vehicles; Type: TABLE DATA; Schema: public; Owner: beba_backend
+-- Data for Name: vehicles; Type: TABLE DATA; Schema: public; Owner: georgen
 --
 
 COPY public.vehicles (id, created_at, updated_at, deleted_at, registration_number, type, model_name, model_year, color, condition, max_weight, fuel_consumption, brand, date_purchased, expected_end_service, photo) FROM stdin;
@@ -328,27 +287,27 @@ COPY public.vehicles (id, created_at, updated_at, deleted_at, registration_numbe
 
 
 --
--- TOC entry 4017 (class 0 OID 0)
+-- TOC entry 4015 (class 0 OID 0)
 -- Dependencies: 201
--- Name: drivers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: beba_backend
+-- Name: drivers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
 --
 
 SELECT pg_catalog.setval('public.drivers_id_seq', 144, true);
 
 
 --
--- TOC entry 4018 (class 0 OID 0)
+-- TOC entry 4016 (class 0 OID 0)
 -- Dependencies: 203
--- Name: trips_id_seq; Type: SEQUENCE SET; Schema: public; Owner: beba_backend
+-- Name: trips_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
 --
 
-SELECT pg_catalog.setval('public.trips_id_seq', 63, true);
+SELECT pg_catalog.setval('public.trips_id_seq', 71, true);
 
 
 --
--- TOC entry 4019 (class 0 OID 0)
+-- TOC entry 4017 (class 0 OID 0)
 -- Dependencies: 205
--- Name: vehicles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: beba_backend
+-- Name: vehicles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
 --
 
 SELECT pg_catalog.setval('public.vehicles_id_seq', 26, true);
@@ -356,7 +315,7 @@ SELECT pg_catalog.setval('public.vehicles_id_seq', 26, true);
 
 --
 -- TOC entry 3856 (class 2606 OID 5120216)
--- Name: drivers drivers_email_key; Type: CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: drivers drivers_email_key; Type: CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.drivers
@@ -365,7 +324,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3858 (class 2606 OID 5120218)
--- Name: drivers drivers_phone_key; Type: CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: drivers drivers_phone_key; Type: CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.drivers
@@ -374,7 +333,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3860 (class 2606 OID 5120220)
--- Name: drivers drivers_pkey; Type: CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: drivers drivers_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.drivers
@@ -383,7 +342,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3864 (class 2606 OID 5120222)
--- Name: trips trips_pkey; Type: CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: trips trips_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.trips
@@ -392,7 +351,7 @@ ALTER TABLE ONLY public.trips
 
 --
 -- TOC entry 3867 (class 2606 OID 5120224)
--- Name: vehicles vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: vehicles vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.vehicles
@@ -401,7 +360,7 @@ ALTER TABLE ONLY public.vehicles
 
 --
 -- TOC entry 3861 (class 1259 OID 5120225)
--- Name: idx_drivers_deleted_at; Type: INDEX; Schema: public; Owner: beba_backend
+-- Name: idx_drivers_deleted_at; Type: INDEX; Schema: public; Owner: georgen
 --
 
 CREATE INDEX idx_drivers_deleted_at ON public.drivers USING btree (deleted_at);
@@ -409,7 +368,7 @@ CREATE INDEX idx_drivers_deleted_at ON public.drivers USING btree (deleted_at);
 
 --
 -- TOC entry 3862 (class 1259 OID 5120226)
--- Name: idx_trips_deleted_at; Type: INDEX; Schema: public; Owner: beba_backend
+-- Name: idx_trips_deleted_at; Type: INDEX; Schema: public; Owner: georgen
 --
 
 CREATE INDEX idx_trips_deleted_at ON public.trips USING btree (deleted_at);
@@ -417,7 +376,7 @@ CREATE INDEX idx_trips_deleted_at ON public.trips USING btree (deleted_at);
 
 --
 -- TOC entry 3865 (class 1259 OID 5120227)
--- Name: idx_vehicles_deleted_at; Type: INDEX; Schema: public; Owner: beba_backend
+-- Name: idx_vehicles_deleted_at; Type: INDEX; Schema: public; Owner: georgen
 --
 
 CREATE INDEX idx_vehicles_deleted_at ON public.vehicles USING btree (deleted_at);
@@ -425,7 +384,7 @@ CREATE INDEX idx_vehicles_deleted_at ON public.vehicles USING btree (deleted_at)
 
 --
 -- TOC entry 3868 (class 2606 OID 5120228)
--- Name: trips fk_drivers_trips; Type: FK CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: trips fk_drivers_trips; Type: FK CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.trips
@@ -434,7 +393,7 @@ ALTER TABLE ONLY public.trips
 
 --
 -- TOC entry 3869 (class 2606 OID 5120233)
--- Name: trips fk_vehicles_trips; Type: FK CONSTRAINT; Schema: public; Owner: beba_backend
+-- Name: trips fk_vehicles_trips; Type: FK CONSTRAINT; Schema: public; Owner: georgen
 --
 
 ALTER TABLE ONLY public.trips
@@ -442,24 +401,15 @@ ALTER TABLE ONLY public.trips
 
 
 --
--- TOC entry 4012 (class 0 OID 0)
--- Dependencies: 4011
--- Name: DATABASE beba; Type: ACL; Schema: -; Owner: beba_backend
---
-
-REVOKE CONNECT,TEMPORARY ON DATABASE beba FROM PUBLIC;
-
-
---
--- TOC entry 4013 (class 0 OID 0)
+-- TOC entry 4011 (class 0 OID 0)
 -- Dependencies: 643
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
 --
 
-GRANT ALL ON LANGUAGE plpgsql TO beba_backend;
+GRANT ALL ON LANGUAGE plpgsql TO georgen;
 
 
--- Completed on 2021-05-15 21:43:51 EAT
+-- Completed on 2021-05-20 09:21:35 EAT
 
 --
 -- PostgreSQL database dump complete
