@@ -10,6 +10,8 @@ proxy:
 	--server_http_tls_port=${PORT} \
 	--server_http_max_read_timeout=60s
 
+envoy:
+	envoy --config-path GrpcWebProxy/envoy.yaml
 # proxy:
 # 	grpcwebproxy \
 #     --backend_addr=localhost:50051 \
