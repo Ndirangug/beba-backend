@@ -1,7 +1,7 @@
 proxy:
 	export PORT=8080 && \
 	grpcwebproxy \
-    --backend_addr=beba-grpc-p2gh3d44pq-uc.a.run.app:443 \
+    --backend_addr=beba-backend-kzcbzpmxyq-uc.a.run.app:443 \
     --backend_tls_noverify \
     --backend_tls=true   \
 	--run_tls_server=false \
@@ -60,7 +60,7 @@ pg_credentials:
 	heroku pg:credentials:url DATABASE --app beba-backend
 
 test_cloud_run:
-	grpcurl  beba-grpc-p2gh3d44pq-uc.a.run.app:443 list
+	grpcurl  beba-backend-kzcbzpmxyq-uc.a.run.app:443 list
 
 # test:
 #	https://beba-grpc-ui-p2gh3d44pq-uc.a.run.app grpcui
