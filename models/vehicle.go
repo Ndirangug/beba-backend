@@ -30,8 +30,8 @@ type Vehicle struct {
 
 func (v *Vehicle) ToProtos() *protos.Vehicle {
 	rand.Seed(faker.RandomUnixTime())
-	lat := -5 + rand.Float64()*(5 - -5)
-	long := 34 + rand.Float64()*(42-34)
+	lat := -5 + rand.Float64()*(3 - -3)
+	long := 34 + rand.Float64()*(40-35)
 	randomLocation := protos.Location{Lat: lat, Long: long}
 	return &protos.Vehicle{VehicleId: uint32(v.ID), Brand: v.Brand, Model: v.ModelName, ModelYear: v.ModelYear, RegistrationNumber: v.RegistrationNumber, FuelConsumption: v.FuelConsumption, Color: v.Color, DatePurchased: timestamppb.New(v.DatePurchased), ExpectedEndService: timestamppb.New(v.ExpectedEndService), Type: v.Type, Condition: v.Condition, MaxWeight: v.MaxWeight, CurrentLocation: &randomLocation, Photo: v.Photo}
 }
