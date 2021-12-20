@@ -22,14 +22,14 @@ envoy:
 # 	--server_http_max_read_timeout=60s
 
 postgres:
-	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
+	export DATABASE_URL="host=ec2-52-86-177-34.compute-1.amazonaws.com user=fyvuslbadosfqp password=24fee4a22513109577e4a620b4ef303a057aeff5a8f4bdf311a182e19fb65404 dbname=dcaes0e6ab7qdh port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
 	sudo service postgresql start
 
 serve:
 	sudo service nginx start && \
 	make postgres && \
 	export PORT=50051 && \
-	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
+	export DATABASE_URL="host=ec2-52-86-177-34.compute-1.amazonaws.com user=fyvuslbadosfqp password=24fee4a22513109577e4a620b4ef303a057aeff5a8f4bdf311a182e19fb65404 dbname=dcaes0e6ab7qdh port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
 	go run main.go serve && \
 	gnome-terminal -- make proxy
 
@@ -37,13 +37,11 @@ grpcui:
 	go run main.go grpcui
 
 seed:
-	make postgres && \
-	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
+	export DATABASE_URL="host=ec2-52-86-177-34.compute-1.amazonaws.com user=fyvuslbadosfqp password=24fee4a22513109577e4a620b4ef303a057aeff5a8f4bdf311a182e19fb65404 dbname=dcaes0e6ab7qdh port=5432 sslmode=require TimeZone=Africa/Nairobi" && \
 	go run main.go seed
 
 migrate:
-	make postgres && \
-	export DATABASE_URL="host=localhost user=beba_backend password=beba dbname=beba port=5432 sslmode=disable TimeZone=Africa/Nairobi" && \
+	export DATABASE_URL="host=ec2-52-86-177-34.compute-1.amazonaws.com user=fyvuslbadosfqp password=24fee4a22513109577e4a620b4ef303a057aeff5a8f4bdf311a182e19fb65404 dbname=dcaes0e6ab7qdh port=5432 sslmode=require TimeZone=Africa/Nairobi" && \
 	go run main.go migrate
 
 generate:

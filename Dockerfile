@@ -47,7 +47,8 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
 COPY --from=builder /app/main /service
 
 # Set DATABASE_URL to heroku postres instance
-ENV DATABASE_URL=postgres://izxhsxrehessof:ac88daf55eb9282136f65c13072001d39980cbf5dc39152e9f39a7ce3897bbd2@ec2-18-214-195-34.compute-1.amazonaws.com:5432/d9tforbs0co1mb
+ENV DATABASE_URL=postgres://fyvuslbadosfqp:24fee4a22513109577e4a620b4ef303a057aeff5a8f4bdf311a182e19fb65404@ec2-52-86-177-34.compute-1.amazonaws.com:5432/dcaes0e6ab7qdh
+
 
 
 # Run the web service on container startup.

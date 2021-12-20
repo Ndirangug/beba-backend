@@ -24,7 +24,7 @@ SET default_table_access_method = heap;
 
 --
 -- TOC entry 200 (class 1259 OID 5120188)
--- Name: drivers; Type: TABLE; Schema: public; Owner: georgen
+-- Name: drivers; Type: TABLE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE TABLE public.drivers (
@@ -47,11 +47,11 @@ CREATE TABLE public.drivers (
 );
 
 
-ALTER TABLE public.drivers OWNER TO georgen;
+ALTER TABLE public.drivers OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 201 (class 1259 OID 5120194)
--- Name: drivers_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
+-- Name: drivers_id_seq; Type: SEQUENCE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE SEQUENCE public.drivers_id_seq
@@ -62,12 +62,12 @@ CREATE SEQUENCE public.drivers_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.drivers_id_seq OWNER TO georgen;
+ALTER TABLE public.drivers_id_seq OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 4012 (class 0 OID 0)
 -- Dependencies: 201
--- Name: drivers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
+-- Name: drivers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER SEQUENCE public.drivers_id_seq OWNED BY public.drivers.id;
@@ -75,7 +75,7 @@ ALTER SEQUENCE public.drivers_id_seq OWNED BY public.drivers.id;
 
 --
 -- TOC entry 202 (class 1259 OID 5120196)
--- Name: trips; Type: TABLE; Schema: public; Owner: georgen
+-- Name: trips; Type: TABLE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE TABLE public.trips (
@@ -97,11 +97,11 @@ CREATE TABLE public.trips (
 );
 
 
-ALTER TABLE public.trips OWNER TO georgen;
+ALTER TABLE public.trips OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 203 (class 1259 OID 5120202)
--- Name: trips_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
+-- Name: trips_id_seq; Type: SEQUENCE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE SEQUENCE public.trips_id_seq
@@ -112,12 +112,12 @@ CREATE SEQUENCE public.trips_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.trips_id_seq OWNER TO georgen;
+ALTER TABLE public.trips_id_seq OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 4013 (class 0 OID 0)
 -- Dependencies: 203
--- Name: trips_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
+-- Name: trips_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER SEQUENCE public.trips_id_seq OWNED BY public.trips.id;
@@ -125,7 +125,7 @@ ALTER SEQUENCE public.trips_id_seq OWNED BY public.trips.id;
 
 --
 -- TOC entry 204 (class 1259 OID 5120204)
--- Name: vehicles; Type: TABLE; Schema: public; Owner: georgen
+-- Name: vehicles; Type: TABLE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE TABLE public.vehicles (
@@ -148,11 +148,11 @@ CREATE TABLE public.vehicles (
 );
 
 
-ALTER TABLE public.vehicles OWNER TO georgen;
+ALTER TABLE public.vehicles OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 205 (class 1259 OID 5120210)
--- Name: vehicles_id_seq; Type: SEQUENCE; Schema: public; Owner: georgen
+-- Name: vehicles_id_seq; Type: SEQUENCE; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE SEQUENCE public.vehicles_id_seq
@@ -163,12 +163,12 @@ CREATE SEQUENCE public.vehicles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.vehicles_id_seq OWNER TO georgen;
+ALTER TABLE public.vehicles_id_seq OWNER TO  fyvuslbadosfqp;
 
 --
 -- TOC entry 4014 (class 0 OID 0)
 -- Dependencies: 205
--- Name: vehicles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: georgen
+-- Name: vehicles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER SEQUENCE public.vehicles_id_seq OWNED BY public.vehicles.id;
@@ -176,7 +176,7 @@ ALTER SEQUENCE public.vehicles_id_seq OWNED BY public.vehicles.id;
 
 --
 -- TOC entry 3852 (class 2604 OID 5120212)
--- Name: drivers id; Type: DEFAULT; Schema: public; Owner: georgen
+-- Name: drivers id; Type: DEFAULT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.drivers_id_seq'::regclass);
@@ -184,7 +184,7 @@ ALTER TABLE ONLY public.drivers ALTER COLUMN id SET DEFAULT nextval('public.driv
 
 --
 -- TOC entry 3853 (class 2604 OID 5120213)
--- Name: trips id; Type: DEFAULT; Schema: public; Owner: georgen
+-- Name: trips id; Type: DEFAULT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.trips ALTER COLUMN id SET DEFAULT nextval('public.trips_id_seq'::regclass);
@@ -192,7 +192,7 @@ ALTER TABLE ONLY public.trips ALTER COLUMN id SET DEFAULT nextval('public.trips_
 
 --
 -- TOC entry 3854 (class 2604 OID 5120214)
--- Name: vehicles id; Type: DEFAULT; Schema: public; Owner: georgen
+-- Name: vehicles id; Type: DEFAULT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.vehicles ALTER COLUMN id SET DEFAULT nextval('public.vehicles_id_seq'::regclass);
@@ -201,7 +201,7 @@ ALTER TABLE ONLY public.vehicles ALTER COLUMN id SET DEFAULT nextval('public.veh
 --
 -- TOC entry 4000 (class 0 OID 5120188)
 -- Dependencies: 200
--- Data for Name: drivers; Type: TABLE DATA; Schema: public; Owner: georgen
+-- Data for Name: drivers; Type: TABLE DATA; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 COPY public.drivers (id, created_at, updated_at, deleted_at, first_name, last_name, email, phone, sex, date_of_birth, date_employed, comment, evaluation_report, drivers_licence, avatar, on_trip) FROM stdin;
@@ -230,7 +230,7 @@ COPY public.drivers (id, created_at, updated_at, deleted_at, first_name, last_na
 --
 -- TOC entry 4002 (class 0 OID 5120196)
 -- Dependencies: 202
--- Data for Name: trips; Type: TABLE DATA; Schema: public; Owner: georgen
+-- Data for Name: trips; Type: TABLE DATA; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 COPY public.trips (id, created_at, updated_at, deleted_at, driver_id, vehicle_id, time_start, time_end, time_expected_start, time_expected_end, latitude_begin, longitude_begin, latitude_end, longitude_end, status) FROM stdin;
@@ -265,7 +265,7 @@ COPY public.trips (id, created_at, updated_at, deleted_at, driver_id, vehicle_id
 --
 -- TOC entry 4004 (class 0 OID 5120204)
 -- Dependencies: 204
--- Data for Name: vehicles; Type: TABLE DATA; Schema: public; Owner: georgen
+-- Data for Name: vehicles; Type: TABLE DATA; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 COPY public.vehicles (id, created_at, updated_at, deleted_at, registration_number, type, model_name, model_year, color, condition, max_weight, fuel_consumption, brand, date_purchased, expected_end_service, photo) FROM stdin;
@@ -289,7 +289,7 @@ COPY public.vehicles (id, created_at, updated_at, deleted_at, registration_numbe
 --
 -- TOC entry 4015 (class 0 OID 0)
 -- Dependencies: 201
--- Name: drivers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
+-- Name: drivers_id_seq; Type: SEQUENCE SET; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 SELECT pg_catalog.setval('public.drivers_id_seq', 144, true);
@@ -298,7 +298,7 @@ SELECT pg_catalog.setval('public.drivers_id_seq', 144, true);
 --
 -- TOC entry 4016 (class 0 OID 0)
 -- Dependencies: 203
--- Name: trips_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
+-- Name: trips_id_seq; Type: SEQUENCE SET; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 SELECT pg_catalog.setval('public.trips_id_seq', 71, true);
@@ -307,7 +307,7 @@ SELECT pg_catalog.setval('public.trips_id_seq', 71, true);
 --
 -- TOC entry 4017 (class 0 OID 0)
 -- Dependencies: 205
--- Name: vehicles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: georgen
+-- Name: vehicles_id_seq; Type: SEQUENCE SET; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 SELECT pg_catalog.setval('public.vehicles_id_seq', 26, true);
@@ -315,7 +315,7 @@ SELECT pg_catalog.setval('public.vehicles_id_seq', 26, true);
 
 --
 -- TOC entry 3856 (class 2606 OID 5120216)
--- Name: drivers drivers_email_key; Type: CONSTRAINT; Schema: public; Owner: georgen
+-- Name: drivers drivers_email_key; Type: CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.drivers
@@ -324,7 +324,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3858 (class 2606 OID 5120218)
--- Name: drivers drivers_phone_key; Type: CONSTRAINT; Schema: public; Owner: georgen
+-- Name: drivers drivers_phone_key; Type: CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.drivers
@@ -333,7 +333,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3860 (class 2606 OID 5120220)
--- Name: drivers drivers_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
+-- Name: drivers drivers_pkey; Type: CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.drivers
@@ -342,7 +342,7 @@ ALTER TABLE ONLY public.drivers
 
 --
 -- TOC entry 3864 (class 2606 OID 5120222)
--- Name: trips trips_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
+-- Name: trips trips_pkey; Type: CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.trips
@@ -351,7 +351,7 @@ ALTER TABLE ONLY public.trips
 
 --
 -- TOC entry 3867 (class 2606 OID 5120224)
--- Name: vehicles vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: georgen
+-- Name: vehicles vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.vehicles
@@ -360,7 +360,7 @@ ALTER TABLE ONLY public.vehicles
 
 --
 -- TOC entry 3861 (class 1259 OID 5120225)
--- Name: idx_drivers_deleted_at; Type: INDEX; Schema: public; Owner: georgen
+-- Name: idx_drivers_deleted_at; Type: INDEX; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE INDEX idx_drivers_deleted_at ON public.drivers USING btree (deleted_at);
@@ -368,7 +368,7 @@ CREATE INDEX idx_drivers_deleted_at ON public.drivers USING btree (deleted_at);
 
 --
 -- TOC entry 3862 (class 1259 OID 5120226)
--- Name: idx_trips_deleted_at; Type: INDEX; Schema: public; Owner: georgen
+-- Name: idx_trips_deleted_at; Type: INDEX; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE INDEX idx_trips_deleted_at ON public.trips USING btree (deleted_at);
@@ -376,7 +376,7 @@ CREATE INDEX idx_trips_deleted_at ON public.trips USING btree (deleted_at);
 
 --
 -- TOC entry 3865 (class 1259 OID 5120227)
--- Name: idx_vehicles_deleted_at; Type: INDEX; Schema: public; Owner: georgen
+-- Name: idx_vehicles_deleted_at; Type: INDEX; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 CREATE INDEX idx_vehicles_deleted_at ON public.vehicles USING btree (deleted_at);
@@ -384,7 +384,7 @@ CREATE INDEX idx_vehicles_deleted_at ON public.vehicles USING btree (deleted_at)
 
 --
 -- TOC entry 3868 (class 2606 OID 5120228)
--- Name: trips fk_drivers_trips; Type: FK CONSTRAINT; Schema: public; Owner: georgen
+-- Name: trips fk_drivers_trips; Type: FK CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.trips
@@ -393,7 +393,7 @@ ALTER TABLE ONLY public.trips
 
 --
 -- TOC entry 3869 (class 2606 OID 5120233)
--- Name: trips fk_vehicles_trips; Type: FK CONSTRAINT; Schema: public; Owner: georgen
+-- Name: trips fk_vehicles_trips; Type: FK CONSTRAINT; Schema: public; Owner:  fyvuslbadosfqp
 --
 
 ALTER TABLE ONLY public.trips
@@ -406,7 +406,7 @@ ALTER TABLE ONLY public.trips
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
 --
 
-GRANT ALL ON LANGUAGE plpgsql TO georgen;
+GRANT ALL ON LANGUAGE plpgsql TO  fyvuslbadosfqp;
 
 
 -- Completed on 2021-05-20 09:21:35 EAT
